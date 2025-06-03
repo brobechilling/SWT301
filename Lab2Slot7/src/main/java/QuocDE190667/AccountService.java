@@ -7,12 +7,17 @@ public class AccountService {
     public boolean registerAccount(String username, String password, String email)
     {
         return username != null && !username.isEmpty()
-                && password != null && !password.isEmpty() && password.length()>6
+                && password != null && !password.isEmpty() && password.trim().length()>6
                 && email != null && !email.isEmpty() && isValidEmail(email);
     }
 
     public boolean isValidEmail(String email)
     {
         return email.matches(EMAIL_REGEX);
+    }
+
+    public boolean isValidPassword(String password)
+    {
+        return password != null && !password.isEmpty() && password.trim().length()>6 && password.trim().length()<12;
     }
 }
